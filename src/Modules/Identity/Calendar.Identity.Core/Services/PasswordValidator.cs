@@ -1,77 +1,73 @@
-﻿using CryptLearn.Modules.AccessControl.Core.Interfaces;
+﻿using Calendar.Identity.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace CryptLearn.Modules.AccessControl.Core.Services
+namespace Calendar.Identity.Core.Services;
+
+internal class PasswordValidator : IPasswordValidator
 {
-    internal class PasswordValidator : IPasswordValidator
+    private readonly PasswordOptions _options;
+
+    public IdentityErrorDescriber Describer { get; }
+
+    public PasswordValidator(Action<PasswordOptions> configureOptions)
     {
-        private readonly PasswordOptions _options;
+        _options = new();
+        configureOptions(_options);
+        Describer = new();
+    }
 
-        public IdentityErrorDescriber Describer { get; }
+    public IdentityResult Validate(string password)
+    {
+        ArgumentNullException.ThrowIfNull(password);
 
-        public PasswordValidator(Action<PasswordOptions> configureOptions)
+        var errors = new List<IdentityError>();
+
+        if (string.IsNullOrWhiteSpace(password) || password.Length < _options.RequiredLength)
         {
-            _options = new();
-            configureOptions(_options);
-            Describer = new();
+            errors.Add(Describer.PasswordTooShort(_options.RequiredLength));
         }
-
-        public IdentityResult Validate(string password)
+        if (_options.RequireNonAlphanumeric && password.All(IsLetterOrDigit))
         {
-            if (password == null)
-            {
-                throw new ArgumentNullException(nameof(password));
-            }
-
-            var errors = new List<IdentityError>();
-
-            if (string.IsNullOrWhiteSpace(password) || password.Length < _options.RequiredLength)
-            {
-                errors.Add(Describer.PasswordTooShort(_options.RequiredLength));
-            }
-            if (_options.RequireNonAlphanumeric && password.All(IsLetterOrDigit))
-            {
-                errors.Add(Describer.PasswordRequiresNonAlphanumeric());
-            }
-            if (_options.RequireDigit && !password.Any(IsDigit))
-            {
-                errors.Add(Describer.PasswordRequiresDigit());
-            }
-            if (_options.RequireLowercase && !password.Any(IsLower))
-            {
-                errors.Add(Describer.PasswordRequiresLower());
-            }
-            if (_options.RequireUppercase && !password.Any(IsUpper))
-            {
-                errors.Add(Describer.PasswordRequiresUpper());
-            }
-            if (_options.RequiredUniqueChars >= 1 && password.Distinct().Count() < _options.RequiredUniqueChars)
-            {
-                errors.Add(Describer.PasswordRequiresUniqueChars(_options.RequiredUniqueChars));
-            }
-            return errors.Count == 0
-                    ? IdentityResult.Success
-                    : IdentityResult.Failed(errors.ToArray());
+            errors.Add(Describer.PasswordRequiresNonAlphanumeric());
         }
-
-        private bool IsDigit(char c)
+        if (_options.RequireDigit && !password.Any(IsDigit))
         {
-            return c >= '0' && c <= '9';
+            errors.Add(Describer.PasswordRequiresDigit());
         }
-
-        private bool IsLower(char c)
+        if (_options.RequireLowercase && !password.Any(IsLower))
         {
-            return c >= 'a' && c <= 'z';
+            errors.Add(Describer.PasswordRequiresLower());
         }
-
-        private bool IsUpper(char c)
+        if (_options.RequireUppercase && !password.Any(IsUpper))
         {
-            return c >= 'A' && c <= 'Z';
+            errors.Add(Describer.PasswordRequiresUpper());
         }
-
-        private bool IsLetterOrDigit(char c)
+        if (_options.RequiredUniqueChars >= 1 && password.Distinct().Count() < _options.RequiredUniqueChars)
         {
-            return IsUpper(c) || IsLower(c) || IsDigit(c);
+            errors.Add(Describer.PasswordRequiresUniqueChars(_options.RequiredUniqueChars));
         }
+        return errors.Count == 0
+                ? IdentityResult.Success
+                : IdentityResult.Failed([.. errors]);
+    }
+
+    private bool IsDigit(char c)
+    {
+        return c >= '0' && c <= '9';
+    }
+
+    private bool IsLower(char c)
+    {
+        return c >= 'a' && c <= 'z';
+    }
+
+    private bool IsUpper(char c)
+    {
+        return c >= 'A' && c <= 'Z';
+    }
+
+    private bool IsLetterOrDigit(char c)
+    {
+        return IsUpper(c) || IsLower(c) || IsDigit(c);
     }
 }

@@ -1,30 +1,20 @@
-﻿using CryptLearn.Modules.AccessControl.Core.Commands;
-using CryptLearn.Shared.Abstractions.Time;
-using CryptLearn.Shared.Infrastructure.Auth;
+﻿using Calendar.Identity.Core.Commands;
+using Calendar.Shared.Abstractions.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Tokens;
 
-namespace CryptLearn.Modules.AccessControl.Core.Services
+namespace Calendar.Identity.Core.Services;
+
+internal class JwtBearerEvents(IMediator mediator) : IJwtBearerEvents
 {
-    internal class JwtBearerEvents : IJwtBearerEvents
+    public async Task MessageReceived(MessageReceivedContext context)
     {
-        private readonly IMediator _mediator;
-
-        public JwtBearerEvents(IMediator mediator)
+        var authorizeAttribute = context.HttpContext.GetEndpoint()?.Metadata?.GetMetadata<AuthorizeAttribute>();
+        if (authorizeAttribute is not null)
         {
-            _mediator = mediator;
-        }
-
-        public async Task MessageReceived(MessageReceivedContext context)
-        {
-            var authorizeAttribute = context.HttpContext.GetEndpoint()?.Metadata?.GetMetadata<AuthorizeAttribute>();
-            if (authorizeAttribute is not null)
-            {
-                context.Token = await _mediator.Send(new RotateToken(context.Options));
-            }
+            context.Token = await mediator.Send(new RotateToken(context.Options));
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Calendar.Shared.Abstractions.Exceptions;
 
-namespace Calendar.Shared.Infrastructure.Exceptions
+namespace Calendar.Shared.Infrastructure.Exceptions;
+
+internal interface IExceptionCompositionRoot
 {
-    internal interface IExceptionCompositionRoot
-    {
-        ExceptionResponse Map(Exception exception);
-    }
+    ExceptionResponse Map(Exception exception);
 }

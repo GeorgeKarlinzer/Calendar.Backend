@@ -1,9 +1,8 @@
-﻿using CryptLearn.Shared.Abstractions.Auth;
+﻿using Calendar.Shared.Abstractions.Auth;
 
-namespace CryptLearn.Modules.AccessControl.Core.Interfaces
+namespace Calendar.Identity.Core.Interfaces;
+
+internal interface IPermissionClaimsSynchronizer
 {
-    internal interface IPermissionClaimsSynchronizer
-    {
-        Task Synchronize(IEnumerable<IPermissionClaimsProvider> claimsProviders, CancellationToken cancellationToken);
-    }
+    Task Synchronize(IEnumerable<IPermissionClaimsProvider> claimsProviders, CancellationToken cancellationToken);
 }

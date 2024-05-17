@@ -1,14 +1,13 @@
-﻿using CryptLearn.Modules.AccessControl.Core.Entities;
+﻿using Calendar.Identity.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CryptLearn.Modules.AccessControl.Core.DAL.Configurations
+namespace Calendar.Identity.Core.DAL.Configurations;
+
+internal class UserConfigurations : IEntityTypeConfiguration<User>
 {
-    internal class UserConfigurations : IEntityTypeConfiguration<User>
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-        public void Configure(EntityTypeBuilder<User> builder)
-        {
-            builder.HasKey(x => x.Id);
-        }
+        builder.HasKey(x => x.Id);
     }
 }

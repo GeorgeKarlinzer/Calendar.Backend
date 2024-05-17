@@ -1,5 +1,5 @@
-﻿using CryptLearn.Modules.AccessControl.Core.DTOs;
-using CryptLearn.Shared.Abstractions.Cqrs;
+﻿using Calendar.Identity.Core.DTOs;
+using Calendar.Shared.Abstractions.Cqrs;
 
-namespace CryptLearn.Modules.AccessControl.Core.Queries;
+namespace Calendar.Identity.Core.Queries;
 internal record GetProfile() : IQuery<ProfileDto>;

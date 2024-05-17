@@ -1,14 +1,13 @@
-﻿using CryptLearn.Modules.AccessControl.Core.Entities;
+﻿using Calendar.Identity.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CryptLearn.Modules.AccessControl.Core.DAL.Configurations
+namespace Calendar.Identity.Core.DAL.Configurations;
+
+internal class ClaimsConfigurations : IEntityTypeConfiguration<PermissionClaim>
 {
-    internal class ClaimsConfigurations : IEntityTypeConfiguration<PermissionClaim>
+    public void Configure(EntityTypeBuilder<PermissionClaim> builder)
     {
-        public void Configure(EntityTypeBuilder<PermissionClaim> builder)
-        {
-            builder.HasKey(x => new { x.Type, x.Value });
-        }
+        builder.HasKey(x => new { x.Type, x.Value });
     }
 }

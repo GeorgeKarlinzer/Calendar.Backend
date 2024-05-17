@@ -1,7 +1,6 @@
-﻿namespace Calendar.Shared.Abstractions.Exceptions
+﻿namespace Calendar.Shared.Abstractions.Exceptions;
+
+public interface IExceptionToResponseMapper
 {
-    public interface IExceptionToResponseMapper
-    {
-        ExceptionResponse Map(Exception exception);
-    }
+    ExceptionResponse Map(Exception exception);
 }

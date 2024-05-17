@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace CryptLearn.Modules.AccessControl.Core.Interfaces
+namespace Calendar.Identity.Core.Interfaces;
+
+internal interface IPasswordValidator
 {
-    internal interface IPasswordValidator
-    {
-        IdentityResult Validate(string password);
-    }
+    IdentityResult Validate(string password);
 }

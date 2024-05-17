@@ -1,12 +1,9 @@
-﻿using System.Security.Claims;
+﻿namespace Calendar.Identity.Core.Entities;
 
-namespace CryptLearn.Modules.AccessControl.Core.Entities
+internal class UserClaim
 {
-    internal class UserClaim
-    {
-        public Guid UserId { get; set; }
-        public User User { get; set; }
-        public string Type { get; set; }
-        public string Value { get; set; }
-    }
+    public Guid UserId { get; set; }
+    public User User { get; set; } = default!;
+    public required string Type { get; set; }
+    public required string Value { get; set; }
 }

@@ -1,7 +1,6 @@
-﻿namespace Calendar.Shared.Abstractions.Time
+﻿namespace Calendar.Shared.Abstractions.Time;
+
+public interface IClock
 {
-    public interface IClock
-    {
-        DateTime CurrentDate();
-    }
+    DateTime CurrentDate();
 }

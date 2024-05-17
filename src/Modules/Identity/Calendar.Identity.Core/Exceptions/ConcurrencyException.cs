@@ -1,11 +1,10 @@
-﻿using CryptLearn.Shared.Abstractions.Exceptions;
+﻿using Calendar.Shared.Abstractions.Exceptions;
 
-namespace CryptLearn.Modules.AccessControl.Core.Exceptions
+namespace Calendar.Identity.Core.Exceptions;
+
+internal class ConcurrencyException : CalendarException
 {
-    internal class ConcurrencyException : CryptLearnException
+    public ConcurrencyException() : base("Concurrency error occured!")
     {
-        public ConcurrencyException() : base("Concurrency error occured!")
-        {
-        }
     }
 }

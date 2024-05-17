@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6A76FB26-286
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E0010124-5629-4402-81F9-767318942310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Api", "src\Calendar.Api\Calendar.Api.csproj", "{C21DBEC7-7A3A-4CC1-8A86-2D9E2A143760}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.Api", "src\Calendar.Api\Calendar.Api.csproj", "{C21DBEC7-7A3A-4CC1-8A86-2D9E2A143760}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A15A3A34-EBA6-4B80-A4F6-0AC3A5D9D4A7}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.Shared.Abstractions", "src\Technology\Calendar.Shared.Abstractions\Calendar.Shared.Abstractions.csproj", "{A9D6367C-ED7C-4A44-A82B-EA5E0405B8AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.Shared.Infrastructure", "src\Technology\Calendar.Shared.Infrastructure\Calendar.Shared.Infrastructure.csproj", "{58158FBC-B0B9-4CC2-8B3A-06AA20BC2AD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.Identity.Core", "src\Modules\Identity\Calendar.Identity.Core\Calendar.Identity.Core.csproj", "{EFB48BB1-D589-4686-8550-F5A8BC954E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{58158FBC-B0B9-4CC2-8B3A-06AA20BC2AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58158FBC-B0B9-4CC2-8B3A-06AA20BC2AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58158FBC-B0B9-4CC2-8B3A-06AA20BC2AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB48BB1-D589-4686-8550-F5A8BC954E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB48BB1-D589-4686-8550-F5A8BC954E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB48BB1-D589-4686-8550-F5A8BC954E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB48BB1-D589-4686-8550-F5A8BC954E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{681B7087-51C8-4A69-8425-A7370D70B01D} = {A15A3A34-EBA6-4B80-A4F6-0AC3A5D9D4A7}
 		{A9D6367C-ED7C-4A44-A82B-EA5E0405B8AD} = {41093922-B969-4B42-8AD3-085CACB3FED8}
 		{58158FBC-B0B9-4CC2-8B3A-06AA20BC2AD1} = {41093922-B969-4B42-8AD3-085CACB3FED8}
+		{EFB48BB1-D589-4686-8550-F5A8BC954E9C} = {681B7087-51C8-4A69-8425-A7370D70B01D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A439AFF-9DCD-4F1C-A70B-7E3E89DF16AA}

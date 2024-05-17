@@ -1,5 +1,5 @@
-﻿using CryptLearn.Shared.Abstractions.Cqrs;
+﻿using Calendar.Shared.Abstractions.Cqrs;
 
-namespace CryptLearn.Modules.AccessControl.Core.Commands;
+namespace Calendar.Identity.Core.Commands;
 
 internal record Logout() : ICommand;

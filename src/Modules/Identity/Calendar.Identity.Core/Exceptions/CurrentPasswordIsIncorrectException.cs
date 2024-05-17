@@ -1,11 +1,10 @@
-﻿using CryptLearn.Shared.Abstractions.Exceptions;
+﻿using Calendar.Shared.Abstractions.Exceptions;
 
-namespace CryptLearn.Modules.AccessControl.Core.Exceptions
+namespace Calendar.Identity.Core.Exceptions;
+
+internal class CurrentPasswordIsIncorrectException : CalendarException
 {
-    internal class CurrentPasswordIsIncorrectException : CryptLearnException
+    public CurrentPasswordIsIncorrectException() : base("Current password is incorrect")
     {
-        public CurrentPasswordIsIncorrectException() : base("Current password is incorrect")
-        {
-        }
     }
 }

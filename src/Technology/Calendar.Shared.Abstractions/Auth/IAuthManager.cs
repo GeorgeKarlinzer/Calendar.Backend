@@ -1,9 +1,8 @@
 using System.Security.Claims;
 
-namespace Calendar.Shared.Abstractions.Auth
+namespace Calendar.Shared.Abstractions.Auth;
+
+public interface IAuthManager
 {
-    public interface IAuthManager
-    {
-        string CreateToken(Guid userId, DateTime expireDate, IEnumerable<Claim> claims = null);
-    }
+    string CreateToken(Guid userId, DateTime expireDate, IEnumerable<Claim> claims = null);
 }

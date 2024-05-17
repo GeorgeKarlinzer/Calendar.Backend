@@ -1,8 +1,7 @@
-﻿namespace CryptLearn.Modules.AccessControl.Core.Entities
+﻿namespace Calendar.Identity.Core.Entities;
+
+internal class PermissionClaim
 {
-    internal class PermissionClaim
-    {
-        public string Type { get; set; }
-        public string Value { get; set; }
-    }
+    public required string Type { get; set; }
+    public required string Value { get; set; }
 }

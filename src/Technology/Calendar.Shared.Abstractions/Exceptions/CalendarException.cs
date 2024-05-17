@@ -1,9 +1,5 @@
-﻿namespace Calendar.Shared.Abstractions.Exceptions
+﻿namespace Calendar.Shared.Abstractions.Exceptions;
+
+public class CalendarException(string message) : Exception(message)
 {
-    public class CalendarException : Exception
-    {
-        public CalendarException(string message) : base(message)
-        {
-        }
-    }
 }
