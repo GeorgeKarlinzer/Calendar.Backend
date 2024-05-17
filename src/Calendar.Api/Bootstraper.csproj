@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\AccessControl\CryptLearn.Modules.AccessControl.Core\CryptLearn.Modules.AccessControl.Core.csproj" />
+    <ProjectReference Include="..\Modules\Languages\CryptLearn.Modules.Languages.Core\CryptLearn.Modules.Languages.Core.csproj" />
+    <ProjectReference Include="..\Modules\ModuleManagement\CryptLearn.Modules.ModuleManagement.Core\CryptLearn.Modules.ModuleManagement.Core.csproj" />
+    <ProjectReference Include="..\Modules\ModuleSolving\CryptLearn.Modules.ModuleSolving.Core\CryptLearn.Modules.ModuleSolving.Core.csproj" />
+    <ProjectReference Include="..\Shared\CryptLearn.Shared.Infrastructure\CryptLearn.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
